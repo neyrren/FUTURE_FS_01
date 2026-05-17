@@ -1,0 +1,25 @@
+{
+  "name": "portfolio-backend",
+  "version": "1.0.0",
+  "description": "Britney's Portfolio API – Express + MySQL",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start":      "node server.js",
+    "dev":        "node --watch server.js",
+    "seed":       "node database/seed.js",
+    "seed:force": "node database/seed.js --force",
+    "db:setup":   "bash database/setup-db.sh"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.3.1",
+    "express-validator": "^7.1.0",
+    "helmet": "^7.1.0",
+    "mysql2": "^3.9.7",
+    "nodemailer": "^6.9.13",
+    "sequelize": "^6.37.3"
+  }
+}

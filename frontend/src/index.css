@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #030712;
+    color: #e2e8f0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: rgba(0,245,212,.22); color: #00f5d4; }
+  ::-webkit-scrollbar       { width: 5px; }
+  ::-webkit-scrollbar-track { background: #0f172a; }
+  ::-webkit-scrollbar-thumb { background: #00f5d4; border-radius: 4px; }
+}
+
+@layer components {
+  .cmax    { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .section { @apply py-20 lg:py-28; }
+
+  /* Gradient text */
+  .grad-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #00f5d4 0%, #818cf8 50%, #00f5d4 100%);
+    background-size: 200% auto;
+    animation: gradientShift 5s ease infinite;
+  }
+
+  /* Section label */
+  .label {
+    @apply inline-flex items-center gap-2 text-[11px] font-mono font-semibold
+           tracking-[0.2em] uppercase text-neon mb-4;
+  }
+  .label::before { content: ''; @apply block w-6 h-px bg-neon; }
+
+  /* Buttons */
+  .btn-glow {
+    @apply relative inline-flex items-center gap-2 px-7 py-3 rounded-xl
+           font-display font-semibold text-sm tracking-wide
+           transition-all duration-300 overflow-hidden;
+    background: linear-gradient(135deg, #00f5d4, #6366f1);
+    color: #030712;
+  }
+  .btn-glow::after {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: linear-gradient(135deg, #6366f1, #00f5d4);
+  }
+  .btn-glow:hover::after { @apply opacity-100; }
+  .btn-glow:hover { transform: translateY(-2px); box-shadow: 0 12px 35px rgba(0,245,212,.35); }
+  .btn-glow > *  { @apply relative z-10; }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-7 py-3 rounded-xl
+           font-display font-semibold text-sm tracking-wide border transition-all duration-300;
+    border-color: rgba(0,245,212,.35);
+    color: #00f5d4;
+  }
+  .btn-ghost:hover {
+    background: rgba(0,245,212,.08);
+    border-color: #00f5d4;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,245,212,.15);
+  }
+
+  /* Cards */
+  .card {
+    @apply rounded-2xl transition-all duration-300;
+    background: linear-gradient(135deg, rgba(15,23,42,.9) 0%, rgba(30,41,59,.5) 100%);
+    border: 1px solid rgba(255,255,255,.06);
+  }
+  .card:hover {
+    border-color: rgba(0,245,212,.25);
+    transform: translateY(-6px);
+    box-shadow: 0 24px 60px rgba(0,0,0,.45), 0 0 30px rgba(0,245,212,.08);
+  }
+
+  /* Glass */
+  .glass {
+    background: rgba(3,7,18,.78);
+    backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+  }
+
+  /* Neon ring */
+  .neon-ring {
+    box-shadow: 0 0 0 1px rgba(0,245,212,.3),
+                0 0 20px rgba(0,245,212,.1),
+                inset 0 0 20px rgba(0,245,212,.04);
+  }
+
+  /* Pill badge */
+  .pill {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-medium;
+    background: rgba(0,245,212,.07);
+    border: 1px solid rgba(0,245,212,.2);
+    color: #00f5d4;
+  }
+
+  /* Form input */
+  .inp {
+    @apply w-full px-4 py-3 rounded-xl text-sm font-body
+           text-slate-200 placeholder-slate-500 outline-none transition-all duration-200;
+    background: rgba(15,23,42,.7);
+    border: 1px solid rgba(255,255,255,.08);
+  }
+  .inp:focus {
+    border-color: rgba(0,245,212,.5);
+    box-shadow: 0 0 0 3px rgba(0,245,212,.1);
+  }
+
+  /* Progress bar */
+  .progress-track { @apply h-1.5 rounded-full overflow-hidden; background: rgba(255,255,255,.05); }
+  .progress-fill  { @apply h-full rounded-full; background: linear-gradient(90deg,#00f5d4aa,#00f5d4); }
+}
+
+@layer utilities {
+  .bg-mesh {
+    background-image:
+      radial-gradient(at 15% 25%, rgba(0,245,212,.07) 0, transparent 55%),
+      radial-gradient(at 85% 75%, rgba(99,102,241,.07) 0, transparent 55%);
+  }
+  .text-neon-glow { text-shadow: 0 0 20px rgba(0,245,212,.55); }
+}
